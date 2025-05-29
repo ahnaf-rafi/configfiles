@@ -2,7 +2,14 @@
   description = "Ahnaf Rafi's nix-darwin and Home Manager Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      overlays = [
+        (import (builtins.fetchTarball {
+          url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+        }))
+      ];
+    };
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -34,7 +41,7 @@
           pkgs.neovim
           pkgs.mkalias
           pkgs.wezterm
-	  pkgs.emacs-pgtk
+          pkgs.emacs-unstable
           # pkgs.tmux
         ];
         fonts.packages = [
@@ -44,9 +51,9 @@
         programs.zsh.enable = true;
 
         system.keyboard = {
-	  enableKeyMapping = true;
-	  remapCapsLockToControl = true;
-	};
+          enableKeyMapping = true;
+          remapCapsLockToControl = true;
+        };
 
         # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
