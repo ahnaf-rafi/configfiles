@@ -34,6 +34,7 @@
           pkgs.neovim
           pkgs.mkalias
           pkgs.wezterm
+	  pkgs.emacs-pgtk
           # pkgs.tmux
         ];
         fonts.packages = [
