@@ -2,14 +2,7 @@
   description = "Ahnaf Rafi's nix-darwin and Home Manager Configuration";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-      overlays = [
-        (import (builtins.fetchTarball {
-          url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-        }))
-      ];
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -41,7 +34,7 @@
           pkgs.neovim
           pkgs.mkalias
           pkgs.wezterm
-          pkgs.emacs-unstable
+          pkgs.emacs
           # pkgs.tmux
         ];
         fonts.packages = [
