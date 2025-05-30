@@ -31,7 +31,12 @@
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         environment.systemPackages = [
+          pkgs.coreutils
+          pkgs.fontconfig
+          pkgs.cargo
+          pkgs.nodejs
           pkgs.neovim
+          pkgs.tree-sitter
           pkgs.mkalias
           pkgs.wezterm
           pkgs.emacs
