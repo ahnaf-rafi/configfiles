@@ -1,0 +1,173 @@
+{
+  "Begin Environment" : {
+    "prefix": ["begin", "\\begin"],
+    "body": [
+      "\\begin{$1}",
+      "  $2",
+      "\\end{$1}$0"
+    ],
+    "description": "Begin Environment"
+  },
+  "Itemize" : {
+    "prefix": ["item"],
+    "body": [
+      "\\begin{itemize}",
+      "  \\item $0",
+      "\\end{itemize}"
+    ],
+    "description": "Itemize Environment"
+  },
+  "Enumerate" : {
+    "prefix": ["enum"],
+    "body": [
+      "\\begin{enumerate}",
+      "  \\item $0",
+      "\\end{enumerate}"
+    ],
+    "description": "Enumerate Environment"
+  },
+  "Definition" : {
+    "prefix": ["def"],
+    "body": [
+      "\\begin{definition}[$1]",
+      "$2",
+      "\\end{definition}$0"
+    ],
+    "description": "Definition Environment"
+  },
+  "Proposition" : {
+    "prefix": ["prop"],
+    "body": [
+      "\\begin{proposition}[$1]",
+      "$2",
+      "\\end{proposition}$0"
+    ],
+    "description": "Proposition Environment"
+  },
+  "Inline Integral": {
+    "prefix": ["int", "\\int"],
+    "body": [
+        "\\int_{${1:a}}^{${2:b}} $0 \\; \\mathrm{d} ${3:x}"
+      ],
+      "description": "Insert an integral."
+  },
+  "Inline Summation": {
+    "prefix": ["sum", "\\sum"],
+    "body": [
+        "\\sum_{${1:i = 1}}^{${2:n}} $0"
+      ],
+      "description": "Insert an inline sum."
+  },
+  "Inline Math": {
+    "prefix": ["ilm"],
+    "body": [
+      "\\($1\\)$0"
+    ],
+    "description": "Insert an inline math environment"
+  },
+  "Unnumbered Equation": {
+    "prefix": "eqnn",
+    "body": [
+        "\\begin{equation*}",
+        "  $0",
+        "\\end{equation*}"
+    ],
+    "description": "Unnumbered Equation"
+  },
+  "Unnumbered Align": {
+    "prefix": "alnn",
+    "body": [
+        "\\begin{align*}",
+        "  $0",
+        "\\end{align*}"
+    ],
+    "description": "Unnumbered Align"
+  },
+  "Aligned Equals": {
+    "prefix": "==",
+    "body": [
+      "= & \\ "
+    ],
+    "description": "Aligned Equals"
+  },
+  "Caligraphic Math": {
+    "prefix": "cal",
+    "body": [
+        "\\mathcal{$1}$0"
+    ],
+    "description": "Caligraphic Math"},
+  "Blackboard Bold Math": {
+    "prefix": "bb",
+    "body": [
+        "\\mathbb{$1}$0"
+    ],
+    "description": "Blackboard Bold Math"},
+  "Roman Math": {
+    "prefix": "rm",
+    "body": [
+        "\\mathrm{$1}$0"
+    ],
+    "description": "Roman Math"},
+  "Boldface Math": {
+    "prefix": "bf",
+    "body": [
+        "\\mathbf{$1}$0"
+    ],
+    "description": "Boldface Math"},
+  "Boldface Text": {
+    "prefix": "tbf",
+    "body": [
+        "\\textbf{$1}$0"
+    ],
+    "description": "Boldface Text"
+  },
+  "Fraction": {
+    "prefix": ["fr", "frac"],
+    "body": [
+        "\\frac{$1}{$2}$0"
+    ],
+    "description": "Fraction"
+  },
+  "Overset": {
+    "prefix": ["ovs"],
+    "body": [
+      "\\overset{$1}{$2}$0"
+    ],
+    "description": "Overset"
+  },
+  "Underset": {
+    "prefix": ["uns"],
+    "body": [
+      "\\underset{$1}{$2}$0"
+    ],
+    "description": "Underset"
+  },
+  "Overline": {
+    "prefix": ["ovl"],
+    "body": [
+      "\\overline{$1}$0"
+    ],
+    "description": "Overline"
+  },
+  "Wide hat": {
+    "prefix": ["wh"],
+    "body": [
+      "\\widehat{$1}$0"
+    ],
+    "description": "Wide hat"
+  },
+  "Wide tilde": {
+    "prefix": ["wt"],
+    "body": [
+      "\\widetilde{$1}$0"
+    ],
+    "description": "Wide tilde"
+  },
+  "Left right braces pair": {
+    "prefix": ["lrb"],
+    "body": [
+      "\\left\\{ $0 \\right\\}"
+    ],
+    "description": "Left right braces pair"
+  }
+}
