@@ -16,7 +16,7 @@ keymap("i", "<m-b>", "<c-left>", opts)
 keymap("i", "<m-f>", "<c-right>", opts)
 keymap("i", "<c-b>", "<left>", opts)
 keymap("i", "<c-f>", "<right>", opts)
-keymap({"n", "v"}, "<leader>fs", ":w<cr>", opts)
+keymap({"n", "v"}, "<leader>fs", ":update<cr>", opts)
 
 opts.desc = "+window"
 keymap("n", "<leader>w", "<c-w>", opts)
