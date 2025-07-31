@@ -13,7 +13,7 @@ keymap('i', '\"', '``\'\'<left><left>', opts)
 keymap('i', "<C-'>", '\\', opts)
 
 keymap('n', '<localleader>t', ':call vimtex#fzf#run()<cr>', opts)
-keymap('n', '<localleader>a', ':w<cr>:VimtexCompileSS<cr>', opts)
+keymap('n', '<localleader>a', ':update<cr>:VimtexCompileSS<cr>', opts)
 
 -- Map (save + single shot compilation) and viewer commands.
 -- opts.desc = "Save and compile"
