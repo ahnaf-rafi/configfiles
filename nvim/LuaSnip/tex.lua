@@ -287,6 +287,19 @@ return {
     }
   ),
 
+  s(
+    {trig = "eg"},
+    {
+      t("\\begin{example}"),
+      sn(
+        1,
+        {t("["), i(1, "Name"), t({"]", "\\label{eg--"}), i(2), t({"}", ""})}
+      ),
+      i(0),
+      t({"", "\\end{example}"})
+    }
+  ),
+
   -- Frames for beamer
   s(
     {trig = "frame"},
@@ -319,12 +332,14 @@ return {
   -- Left/right pairs
   s(
     {trig = "\\left(", snippetType = "autosnippet"},
-    {t("\\left( "), i(0), t(" \\right")}
+    -- {t("\\left( "), i(0), t(" \\right)")}
+    {t("\\left( "), i(0), t(" \\right"), i(1)}
   ),
 
   s(
     {trig = "\\left[", snippetType = "autosnippet"},
-    {t("\\left[ "), i(0), t(" \\right")}
+    -- {t("\\left[ "), i(0), t(" \\right]")}
+    {t("\\left[ "), i(0), t(" \\right"), i(1)}
   ),
 
   s(

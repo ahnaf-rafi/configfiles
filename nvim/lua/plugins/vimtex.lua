@@ -27,6 +27,7 @@ return {
         close_indented = 0,
         include_modified_math = 0
       }
+      g.vimtex_syntax_enabled               = 1
       g.vimtex_syntax_conceal_disable       = 1
       g.tex_indent_items                    = 0
       g.tex_no_error                        = 1
@@ -49,8 +50,9 @@ return {
         "rem",
         "example",
         "eg",
+        "notation",
+        "note",
         "proof"
-
       }
 
       g.vimtex_toc_config = {
@@ -85,9 +87,6 @@ return {
         tocdepth = 3,
         todo_sorted = 1
       }
-
-      g.vimtex_syntax_enabled = 0
-      g.vimtex_syntax_conceal_disable = 1
 
     end,
   },

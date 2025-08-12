@@ -24,7 +24,7 @@ return {
       highlight = {
         enable = true,
         -- disable = { "julia" },
-        -- disable = { "latex" },
+        disable = { "latex" },
       },
       indent = {
         enable = true
