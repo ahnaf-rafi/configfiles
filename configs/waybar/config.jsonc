@@ -22,7 +22,7 @@
     "battery",
     // "battery#bat2",
     "clock",
-    "tray",
+    "tray"
     // "custom/power"
   ],
   // Modules configuration
@@ -30,7 +30,7 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "format": "{name}",
+    "format": "{name}"
   },
   "hyprland/window": {
     "max-length": 40,
@@ -48,7 +48,7 @@
   },
   "tray": {
     // "icon-size": 21,
-    "spacing": 10,
+    "spacing": 10 //,
     // "icons": {
     //   "blueman": "bluetooth",
     //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
