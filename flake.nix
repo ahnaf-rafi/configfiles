@@ -29,7 +29,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; hostName = "leonard"; };
+              extraSpecialArgs = { inherit inputs; };
               users.ahnafrafi = import ./home;
               backupFileExtension = "backup";
             };

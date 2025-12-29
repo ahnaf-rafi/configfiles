@@ -2,7 +2,7 @@
 let
   # Function for making out of store symbolic links.
   oossl = path: config.lib.file.mkOutOfStoreSymlink path;
-  dotsDir = "${config.my.dotfiles}";
+  dotsDir = "${config.home.homeDirectory}/configfiles/configs";
 
   configs = {
     git = "git";

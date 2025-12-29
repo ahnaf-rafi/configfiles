@@ -1,20 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
-let
-  hostName =
-    config.networking.hostName or config.networking.computerName or null;
-in {
 
-  options.my.dotfiles = lib.mkOption {
-    type = lib.types.str;
-    description = "Root directory for dotfiles";
-  };
-
-  # Dotfiles directory.
-  my.dotfiles = "${config.home.homeDirectory}/configfiles/configs";
-
+{
   imports = [
-    ./modules/dotfiles-link.nix
-  ] ++ lib.optionals (hostName == "leonard") [
+    ./modules/dotfiles-linker.nix
+    # TODO: Figure out how to make this conditional on
+    # config.networking.hostName using lib.mkIf.
     ./hosts/leonard.nix
   ];
 
@@ -52,7 +42,7 @@ in {
         geometry setspace hyperref enumitem
         float booktabs multirow
         amsmath amsfonts amscls tools jknapltx cleveref
-        etaremune calc crossreftools
+        etaremune crossreftools
         wrapfig ulem capt-of
         dvisvgm dvipng # for preview and export as html
       ]))

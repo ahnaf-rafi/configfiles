@@ -3,7 +3,7 @@
 {
   imports = [
     ../nixpkgs
-    ./host-flags.nix
+    # ./host-flags.nix
   ];
 
   environment.systemPackages = with pkgs; [
