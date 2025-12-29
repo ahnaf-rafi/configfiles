@@ -37,6 +37,7 @@
   environment.systemPackages = with pkgs; [
     foot
     waybar
+    rofi
     hyprpaper
     pcmanfm
   ];
