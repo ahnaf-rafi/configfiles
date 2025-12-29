@@ -8,6 +8,7 @@
   // Choose the order of the modules
   "modules-left": [
     "hyprland/workspaces",
+    "hyprland/window"
   ],
   "modules-center": [ ],
   "modules-right": [
@@ -26,11 +27,16 @@
   ],
   // Modules configuration
   "hyprland/workspaces": {
-      "disable-scroll": true,
-      "all-outputs": true,
-      "warp-on-scroll": false,
-      "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}",
   },
+  "hyprland/window": {
+    "max-length": 40,
+    "separate-outputs": false
+  },
+
   "keyboard-state": {
     "numlock": true,
     "capslock": true,
