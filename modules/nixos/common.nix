@@ -40,6 +40,7 @@
     rofi
     hyprpaper
     pcmanfm
+    adwaita-icon-theme
   ];
 
   # List of services.
