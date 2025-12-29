@@ -1,6 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
-
-{
+let
+  hostName =
+    config.networking.hostName or config.networking.computerName or null;
+in {
 
   options.my.dotfiles = lib.mkOption {
     type = lib.types.str;
