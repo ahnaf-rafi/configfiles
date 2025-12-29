@@ -24,6 +24,16 @@
         specialArgs = { inherit inputs; };  # Pass inputs to modules
         modules = [
           ./hosts/leonard
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; hostName = "leonard"; };
+              users.ahnafrafi = import ./home;
+              backupFileExtension = "backup";
+            };
+          }
         ];
       };
     };
