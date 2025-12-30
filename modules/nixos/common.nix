@@ -13,7 +13,29 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  # Enable Network Manager
   networking.networkmanager.enable = true;
+
+  # Enable bluetooth support
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Allow headsets to connect using the A2DP profile.
+        Enable = "Source,Sink,Media,Socket";
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
 
   # Time zone is set automatically by automatic-timezond, but defaults to
   # America/New_York.
@@ -35,6 +57,7 @@
 
   # Packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    brightnessctl
     foot
     waybar
     rofi
@@ -44,17 +67,31 @@
   ];
 
   # List of services.
+  # Bluetooth management with blueman.
+  services.blueman.enable = true;
+
+  # Audio with pipewire.
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.extraConfig.bluetoothEnhancements = {
+      "monitor.bluez.properties" = {
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.enable-hw-volume" = true;
+          "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+      };
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable dbus.
   services.dbus.enable = true;
-
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   # Enable touchpad support.
   services.libinput.enable = true;
