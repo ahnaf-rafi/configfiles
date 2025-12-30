@@ -2,4 +2,4 @@
 
 alias ll='ls -alhF --group-directories-first'
 alias nrs='sudo nixos-rebuild switch --flake ~/configfiles'
-alias ngc='sudo nix-env --delete-generations +3; sudo nix-garbage-collect'
+alias ngc='sudo nix-env --delete-generations +3; sudo nix-collect-garbage'
