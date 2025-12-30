@@ -34,15 +34,19 @@
     (pkgs.aspellWithDicts
       (dicts: with dicts; [ en en-computers en-science ]))
 
-    # pkgs.texlive.combined.scheme-full
+    # pkgs.texliveMedium
     (pkgs.texliveMinimal.withPackages (
       ps: with ps; [
-        latexmk latex-bin
+        latex latex-bin latexmk beamer
+        epstopdf-pkg
+        cm-super ec rsfs
         biber biblatex biblatex-chicago
         geometry setspace hyperref enumitem
+        graphics
         float booktabs multirow
         amsmath amsfonts amscls tools jknapltx cleveref
         etaremune crossreftools
+        xstring xkeyval l3packages
         wrapfig ulem capt-of
         dvisvgm dvipng # for preview and export as html
       ]))
