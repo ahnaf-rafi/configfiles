@@ -6,6 +6,7 @@ let
 
   configs = {
     git = "git";
+    nvim = "nvim";
     kitty = "kitty";
     foot = "foot";
     hypr = "hypr";
