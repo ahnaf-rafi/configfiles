@@ -68,6 +68,7 @@
   ];
 
   # List of services.
+  # TODO: Make all/most of these conditional on being a laptop.
   # Bluetooth management with blueman.
   services.blueman.enable = true;
 
@@ -111,8 +112,8 @@
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
       # Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+      START_CHARGE_THRESH_BAT0 = 75; # 40 and below it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 90; # 80 and above it stops charging
     };
   };
 }
