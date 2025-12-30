@@ -59,6 +59,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     foot
+    wl-clipboard
     waybar
     rofi
     hyprpaper
