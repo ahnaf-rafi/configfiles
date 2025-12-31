@@ -27,6 +27,7 @@
     pkgs.fzf
     pkgs.bat
     pkgs.neovim
+    pkgs.tree-sitter
     pkgs.tmux
     pkgs.lazygit
     pkgs.delta
