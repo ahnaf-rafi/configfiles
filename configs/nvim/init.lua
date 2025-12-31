@@ -1,2 +1,2 @@
-require("options")
-require("keybinds-basic")
+-- Basic options and keybindings.
+require("minimal")
