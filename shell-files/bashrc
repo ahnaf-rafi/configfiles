@@ -1,3 +1,6 @@
 #!/bin/sh
+#
+# ~/.bashrc
+#
 
 alias ll='ls -alhF --group-directories-first'
