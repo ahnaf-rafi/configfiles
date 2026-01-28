@@ -31,7 +31,7 @@ font pango:JetBrainsMono Nerd Font 12px
 
 set $internal "Lenovo Group Limited B160UAN06.N  Unknown"
 set $work "Dell Inc. DELL U2913WM 5YD8C42S539L"
-set $home "Dell Inc. DELL SOMEUNIT  SOMESERIAL"
+set $home "Dell Inc. DELL S2725DS 3BD1X14"
 
 ##############
 # Autostarts #
@@ -110,9 +110,9 @@ bindsym $mod+Shift+Space exec $exec-menu
 bindsym $alt+Tab exec $window-menu
 
 # Deal with notifications.
-bindsym $mod+n exec makoctl close
-bindsym $mod+Shift+n exec makoctl close-all
-bindsym $mod+$alt+n exec makoctl history-pop
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Shift+n exec makoctl dismiss -a
+bindsym $mod+$alt+n exec "makoctl history | rofi -dmenu"
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -301,6 +301,7 @@ workspace $ws17 output $internal
 workspace $ws18 output $internal
 workspace $ws19 output $internal
 workspace $ws20 output $internal
+exec_always swaymsg "workspace 11; workspace 1"
 
 # Change monitor focus
 bindsym $mod+m focus output left
