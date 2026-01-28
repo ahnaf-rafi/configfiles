@@ -1,4 +1,4 @@
-local keyopts = {silent = true, noremap = true}
+local keyopts = { silent = true, noremap = true }
 local keymap = vim.keymap.set
 
 vim.g.mapleader = " "
