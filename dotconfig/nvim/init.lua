@@ -1,2 +1,2 @@
 -- Basic options and keybindings.
-require("minimal")
+require("base")
