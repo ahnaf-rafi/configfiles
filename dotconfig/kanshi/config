@@ -12,7 +12,19 @@ output "Dell Inc. DELL U2913WM 5YD8C42S539L" {
   alias $WORK
 }
 
+output "Dell Inc. DELL S2725DS 3BD1X14" {
+  mode 2560x1440@59.9510
+  position 1920,0
+  scale 1.00
+  alias $HOME
+}
+
 profile work {
   output $INTERNAL enable
   output $WORK enable
+}
+
+profile home {
+  output $INTERNAL enable
+  output $HOME enable
 }
