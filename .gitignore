@@ -1,1 +1,4 @@
 dotconfig/systemd/user/default.target.wants/maestral-daemon@maestral.service
+
+# Neovim and Vim
+*.spl  # Spelling binary files.
