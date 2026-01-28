@@ -1,0 +1,16 @@
+set selection-clipboard clipboard
+
+# Adjust view Open file
+set adjust-open "width"
+
+# Show status bar (s) and vertical scrollbar (v)
+set guioptions sv
+
+# Column in which the first page will be displayed
+set first-page-column 1
+
+# Percentage amount that is zoomed in or out on each command
+set zoom-step 2
+
+# Copy file path to clipboard.
+map <C-o> feedkeys ":exec sh -c \"echo -n $FILE | mycp\"<Return>"
