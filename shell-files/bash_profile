@@ -24,10 +24,11 @@ export MANPAGER='/usr/bin/nvim +Man!'
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
-# # Options for FZF
-# export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-# export FZF_DEFAULT_OPTS='-m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Options for FZF
+export FZF_DEFAULT_COMMAND='fd -t f --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='-m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd -t d --hidden --follow --exclude .git'
 
 # R environment
 if [ -d $XDG_CONFIG_HOME/R ] ; then
@@ -38,7 +39,6 @@ fi
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-  # kanshi
   exec sway
 fi
 
