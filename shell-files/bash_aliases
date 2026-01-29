@@ -11,6 +11,8 @@ alias v=$VISUAL
 
 alias fcd='cd $(fd --type directory | fzf)'
 
+alias julia='julia --project=@.'
+
 # Shell bookmark navigation
 if [ -x "$(command -v cdg-path-handler)" ]; then
   alias cdg='cd $(cdg-path-handler)'
