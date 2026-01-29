@@ -4,7 +4,7 @@ return {
   init = function ()
     vim.g.vimtex_mappings_prefix = '<localleader>'
     -- Disable `K` as it conflicts with LSP hover.
-    vim.g.vimtex_mappings_disable = { ["n"] = { "K" } }  
+    vim.g.vimtex_mappings_disable = { ["n"] = { "K" } }
 
     vim.g.vimtex_indent_ignored_envs = {
       "document",
@@ -30,7 +30,9 @@ return {
       "proof"
     }
 
+    -- TODO: make this OS-agnostic.
     vim.g.vimtex_view_method = 'zathura_simple'
+
     -- -- vim.g.vimtex_view_method = 'skim'
     -- -- vim.g.vimtex_callback_progpath = '/opt/homebrew/bin/nvim'
     -- -- vim.g.vimtex_callback_progpath = exepath(v:progname)
