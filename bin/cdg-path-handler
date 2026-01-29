@@ -4,16 +4,20 @@
 
 # Bookmarks are stored in ~/cdgpaths.
 bmfile="${BMFILE:-$HOME/cdgpaths}"
+
+# Backup: don't change directory from current one.
+destdir=$(pwd)
+
 if [ -r "$bmfile" ]; then
   destdir=$(sed 's/#.*//g; /^[[:space:]]*$/d' "$bmfile" | fzf)
-
   if [ -n "$destdir" ]; then
     # Perform tilde expansion if needed.
     case "$destdir" in
       '~'*) destdir="$HOME${destdir#?}" ;;
     esac
-    cd "$destdir" || { echo "Error: Failed to enter directory."; }
   fi
 else
-  echo "Error: Bookmark file $bmfile is not readable."
+  echo "Error: $bmfile is not readable; returning to current directory"
 fi
+
+echo -n "$destdir"

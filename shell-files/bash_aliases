@@ -11,6 +11,11 @@ alias v=$VISUAL
 
 alias fcd='cd $(fd --type directory | fzf)'
 
+# Shell bookmark navigation
+if [ -x "$(command -v cdg-path-handler)" ]; then
+  alias cdg='cd $(cdg-path-handler)'
+fi
+
 if [ -x "$(command -v nvim)" ]; then
   alias nv='nvim'
 fi
