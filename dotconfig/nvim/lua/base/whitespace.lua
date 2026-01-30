@@ -22,11 +22,15 @@ opt.listchars = {
 vim.api.nvim_set_hl(0, 'TrailingWhitespace', { bg='LightRed' })
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*',
-	command = [[
-		syntax clear TrailingWhitespace |
-		syntax match TrailingWhitespace "\_s\+$" containedin=ALL display
-	]]}
-)
+  callback = function()
+    if vim.bo.buftype ~= "terminal" then
+      vim.cmd([[
+      syntax clear TrailingWhitespace |
+      syntax match TrailingWhitespace "\_s\+$" containedin=ALL display
+      ]])
+    end
+  end
+})
 
 -- Strip trailing whitespaces before save.
 -- Note: this only strips spaces at the end of a line. It does not get rid of
@@ -63,8 +67,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.api.nvim_win_set_cursor(0, save_cursor)
   end,
 })
-
--- Highlight groups and autocommands.
 
 -- Highlight multiple spaces between words, except before comment character,
 -- for certain filetypes.
