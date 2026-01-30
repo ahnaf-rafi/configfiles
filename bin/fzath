@@ -20,12 +20,4 @@ fi
 if [ -n "$selection" ]; then
   nohup zathura "$selection" >/dev/null 2>&1 &
   printf "Opening: %s\n" "$selection"
-  # zathura "$selection" > /dev/null 2>&1 &
-  # # 'disown' is a bash/zsh shell builtin, not POSIX. 
-  # # For true POSIX compatibility, we use '&' and redirection.
-  # # If your shell supports disown, we can check for its existence:
-  # if command -v disown >/dev/null 2>&1; then
-  #   disown
-  # fi
-  # echo "Opening: $selection"
 fi
