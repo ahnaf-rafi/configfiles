@@ -30,6 +30,14 @@ return {
       "proof"
     }
 
+    -- Don't indent delimiters.
+    vim.g.vimtex_indent_delims = {
+      open = {},
+      close = {},
+      close_indented = 0,
+      include_modified_math = 0
+    }
+
     -- TODO: make this OS-agnostic.
     vim.g.vimtex_view_method = 'zathura_simple'
 
@@ -38,12 +46,6 @@ return {
     -- -- vim.g.vimtex_callback_progpath = exepath(v:progname)
     -- vim.g.vimtex_fold_enabled = 0
     -- vim.g.vimtex_indent_enabled = 1
-    -- vim.g.vimtex_indent_delims = {
-    --   open = {},
-    --   close = {},
-    --   close_indented = 0,
-    --   include_modified_math = 0
-    -- }
     -- vim.g.vimtex_syntax_enabled = 1
     -- vim.g.vimtex_syntax_conceal_disable = 1
     -- vim.g.tex_indent_items = 0

@@ -19,17 +19,54 @@ opt.listchars = {
 }
 
 -- Highlight trailing whitespaces.
-vim.api.nvim_set_hl(0, 'TrailingWhitespace', { bg='LightRed' })
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*',
-  callback = function()
-    if vim.bo.buftype ~= "terminal" then
-      vim.cmd([[
-      syntax clear TrailingWhitespace |
-      syntax match TrailingWhitespace "\_s\+$" containedin=ALL display
-      ]])
+-- vim.api.nvim_set_hl(0, 'TrailingWhitespace', { bg='LightRed' })
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--   pattern = '*',
+--   callback = function()
+--     if vim.bo.buftype ~= "terminal" then
+--       vim.cmd([[
+--       syntax clear TrailingWhitespace |
+--       syntax match TrailingWhitespace "\_s\+$" containedin=ALL display
+--       ]])
+--     else
+--       -- Explicitly clear it if we ARE in a terminal
+--       vim.cmd([[syntax clear TrailingWhitespace]])
+--     end
+--   end
+-- })
+
+local whitespace_group = vim.api.nvim_create_namespace("ExtraWhitespace")
+
+local function update_whitespace_highlights()
+    -- 1. Guard: Immediately exit for terminals or special buffers
+    if vim.bo.buftype == "terminal" or vim.bo.buftype == "nofile" then
+        -- Clear matches if we accidentally brought them into a terminal
+        vim.fn.clearmatches()
+        return
     end
-  end
+
+    -- 2. Clear old matches in the current window to prevent stacking
+    local matches = vim.fn.getmatches()
+    for _, match in ipairs(matches) do
+        if match.group == "ExtraWhitespace" then
+            vim.fn.matchdelete(match.id)
+        end
+    end
+
+    -- 3. Define the patterns
+    -- Pattern 1: Trailing whitespace at end of line
+    -- Pattern 2: A newline that follows another newline (look-behind)
+    local trailing_regex = [[\s\+$]]
+    local extra_newline_regex = [[\(\n\n\)\@<=\n]]
+
+    -- 4. Apply the highlights
+    vim.fn.matchadd("ErrorMsg", trailing_regex, 10, -1, { group = "ExtraWhitespace" })
+    vim.fn.matchadd("ErrorMsg", extra_newline_regex, 10, -1, { group = "ExtraWhitespace" })
+end
+
+-- 5. Set up the Autocommands
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter", "InsertLeave" }, {
+    callback = update_whitespace_highlights,
 })
 
 -- Strip trailing whitespaces before save.
@@ -72,23 +109,24 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- for certain filetypes.
 vim.api.nvim_set_hl(0, 'MultiSpace', { bg = 'LightGreen' })
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
-  pattern = { '*.tex', '*.bib', '*.typ', '*.md', '*.txt' },
+  pattern = { '*.tex', '*.bib', '*.typ', '*.md' }, -- '*.txt'
   callback = function()
-    local cms = vim.bo.commentstring
-    local comment_char = cms:gsub('%%s', ''):gsub('%s+', '')
-    if comment_char == "" then
-      comment_char = "%"
+    if vim.bo.buftype ~= "terminal" then
+      local cms = vim.bo.commentstring
+      local comment_char = cms:gsub('%%s', ''):gsub('%s+', '')
+      if comment_char == "" then
+        comment_char = "%"
+      end
+      local escaped_char = vim.fn.escape(comment_char, '/\\*^$.')
+      local regex = [[\S\zs \{2,}\ze\(\s*]] .. escaped_char .. [[\)\@!\S]]
+      -- The 'containedin=ALL' forces the highlight to work even inside strings
+      -- or comments.
+      local cmd = string.format(
+        'syntax match MultiSpace /%s/ containedin=ALL display',
+        regex
+      )
+      vim.cmd('syntax clear MultiSpace')
+      vim.cmd(cmd)
     end
-    local escaped_char = vim.fn.escape(comment_char, '/\\*^$.')
-    local regex = [[\S\zs \{2,}\ze\(\s*]] .. escaped_char .. [[\)\@!\S]]
-    -- The 'containedin=ALL' forces the highlight to work even inside strings
-    -- or comments.
-    local cmd = string.format(
-      'syntax match MultiSpace /%s/ containedin=ALL display',
-      regex
-    )
-    vim.cmd('syntax clear MultiSpace')
-    vim.cmd(cmd)
-
   end,
 })

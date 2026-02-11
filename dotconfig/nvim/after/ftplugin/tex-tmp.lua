@@ -1,0 +1,1 @@
+-- map('n', '<localleader>t', ':call vimtex#fzf#run()<cr>', opts)

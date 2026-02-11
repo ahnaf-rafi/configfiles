@@ -27,7 +27,15 @@ local sn = ls.snippet_node
 -- local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 -- local k = require("luasnip.nodes.key_indexer").new_key
---
+-- Helper function for repetitive left/right snippets
+
+local lr_snippet = function(trigger, left, right)
+  return s({ trig = "lr" .. trigger, snippetType = "autosnippet" }, {
+    t("\\left" .. left .. " "),
+    i(1),
+    t(" \\right" .. right),
+  })
+end
 
 return {
   s(
@@ -337,31 +345,51 @@ return {
     }
   ),
 
+  s({ trig = '"', snippetType = "autosnippet" }, {
+    t("``"), i(1), t("''"), i(0)
+  }),
+
   -- Left/right pairs
-  s(
-    {trig = "\\left(", snippetType = "autosnippet"},
-    -- {t("\\left( "), i(0), t(" \\right)")}
-    {t("\\left( "), i(0), t(" \\right"), i(1)}
-  ),
+  -- s(
+  --   {trig = "\\left(", snippetType = "autosnippet"},
+  --   -- {t("\\left( "), i(0), t(" \\right)")}
+  --   {t("\\left( "), i(0), t(" \\right"), i(1)}
+  -- ),
 
-  s(
-    {trig = "\\left[", snippetType = "autosnippet"},
-    -- {t("\\left[ "), i(0), t(" \\right]")}
-    {t("\\left[ "), i(0), t(" \\right"), i(1)}
-  ),
+  -- s(
+  --   {trig = "\\left[", snippetType = "autosnippet"},
+  --   -- {t("\\left[ "), i(0), t(" \\right]")}
+  --   {t("\\left[ "), i(0), t(" \\right"), i(1)}
+  -- ),
 
-  s(
-    {trig = "\\left\\{", snippetType = "autosnippet"},
-    {t("\\left\\{ "), i(0), t(" \\right\\}")}
-  ),
+  -- s(
+  --   {trig = "\\left\\{", snippetType = "autosnippet"},
+  --   {t("\\left\\{ "), i(0), t(" \\right\\}")}
+  -- ),
 
-  s(
-    {trig = "\\left|", snippetType = "autosnippet"},
-    {t("\\left| "), i(0), t(" \\right|")}
-  ),
+  -- s(
+  --   {trig = "\\left|", snippetType = "autosnippet"},
+  --   {t("\\left| "), i(0), t(" \\right|")}
+  -- ),
 
-  s(
-    {trig = "\\left\\|", snippetType = "autosnippet"},
-    {t("\\left\\| "), i(0), t(" \\right\\|")}
-  ),
+  -- s(
+  --   {trig = "\\left\\|", snippetType = "autosnippet"},
+  --   {t("\\left\\| "), i(0), t(" \\right\\|")}
+  -- ),
+
+  -- Parentheses: type 'lr('
+  lr_snippet("(", "(", ")"),
+
+  -- Brackets: type 'lr['
+  lr_snippet("[", "[", "]"),
+
+  -- Braces: type 'lr{' (handles the backslash for \{ \})
+  lr_snippet("{", "\\{", "\\}"),
+
+  -- Absolute value: type 'lr|'
+  lr_snippet("|", "|", "|"),
+
+  -- Absolute value: type 'lr|'
+  lr_snippet("\\|", "\\|", "\\|"),
+
 }
