@@ -1,6 +1,9 @@
 # set recolor-darkcolor "#dcdccc"
 # set recolor-lightcolor "#1f1f1f"
 
+# Font
+set font "JuliaMono 12"
+
 # Clipboard setting.
 set selection-clipboard clipboard
 

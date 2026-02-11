@@ -1,3 +1,42 @@
+# TODOs
+- Configure mako.
+- Configure waybar.
+- Configure vimtex and make pdf viewer OS agnostic.
+- Configure tmux.
+- Consider setting up gammastep for night light.
+- Add the following to package list for pacman:
+  openconnect
+  networkmanager-openconnect
+  texlive-latex
+  texlive-binextra
+  texlive-latexrecommended
+  texlive-latexextra
+  texlive-fontsrecommended
+  texlive-bibtexextra
+  texlive-mathscience
+  biber
+  texlab
+  tree-sitter-cli
+  zathura
+  zathura-djvu
+  zathura-pdf-mupdf
+  noto-fonts-emoji
+  python-systemd  # for maestral
+  flameshot
+  xdg-desktop-portal
+  xdg-desktop-portal-wlr
+  seahorse  # for keyring management
+  yazi
+  sshfs
+  nodejs
+  lynx
+  lua-language-server
+- Add the following to package list for yay:
+  sioyek zoom maestral maestral-qt jabref
+- Configure whitespace handling in Neovim.
+- Note: For printer Ricoh IM 7000, set `Finisher: SR4140'
+- Fix sway workspace configuration startup.
+
 # Arch
 ## CPU microcode
 Figure out if microcode updates are getting loaded correctly

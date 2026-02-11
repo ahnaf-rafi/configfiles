@@ -46,6 +46,7 @@ Here is a package list I like to have the installer install.
   fd
   foot
   foot-terminfo
+  fzf
   git
   greetd
   greetd-regreet
@@ -60,6 +61,7 @@ Here is a package list I like to have the installer install.
   linux-headers
   linux-lts
   linux-lts-headers
+  mako
   man-db
   man-pages 
   mesa
@@ -233,3 +235,9 @@ Pkg.add(["NLopt", "JuMP", "HDF5", "JLD", "CSV", "DataFrames", "StatFiles",
          "LibSSH2_jll", "JuliaInterpreter", "MKL_jll", "Grisu", "GR_jll",
          "Latexify", "LibVPX_jll", "Contour", "PrettyTables", "EzXML"])
 ```
+
+
+## Systemd User services
+- Maestral
+- kanshi
+- swayosd ?
